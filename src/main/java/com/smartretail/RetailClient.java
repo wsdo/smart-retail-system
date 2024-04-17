@@ -56,9 +56,9 @@ public class RetailClient extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        ManagedChannel inventoryChannel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
-        ManagedChannel checkoutChannel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
-        ManagedChannel paymentChannel = ManagedChannelBuilder.forAddress("localhost", 50053).usePlaintext().build();
+        ManagedChannel inventoryChannel = ManagedChannelBuilder.forAddress("localhost", 7001).usePlaintext().build();
+        ManagedChannel checkoutChannel = ManagedChannelBuilder.forAddress("localhost", 7003).usePlaintext().build();
+        ManagedChannel paymentChannel = ManagedChannelBuilder.forAddress("localhost", 7002).usePlaintext().build();
 
         inventoryStub = InventoryServiceGrpc.newBlockingStub(inventoryChannel);
         checkoutStub = CheckoutServiceGrpc.newBlockingStub(checkoutChannel);

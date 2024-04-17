@@ -1,5 +1,7 @@
 package com.smartretail.payment;
 
+import com.ecwid.consul.v1.ConsulClient;
+import com.ecwid.consul.v1.agent.model.NewService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -40,9 +42,19 @@ public class PaymentServer {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        int port = 50053;
+        int port = 7002;
         PaymentServer server = new PaymentServer(port);
         server.start();
+
+        // 注册服务到Consul
+        ConsulClient consulClient = new ConsulClient("localhost");
+        NewService newService = new NewService();
+        newService.setId("payment-service");
+        newService.setName("payment-service");
+        newService.setAddress("localhost");
+        newService.setPort(port);
+        consulClient.agentServiceRegister(newService);
+
         server.blockUntilShutdown();
     }
 }

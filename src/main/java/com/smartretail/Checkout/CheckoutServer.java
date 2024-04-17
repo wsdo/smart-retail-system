@@ -1,5 +1,7 @@
 package com.smartretail.Checkout;
 
+import com.ecwid.consul.v1.ConsulClient;
+import com.ecwid.consul.v1.agent.model.NewService;
 import com.smartretail.InventoryServiceGrpc;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -43,8 +45,8 @@ public class CheckoutServer {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        int inventoryPort = 50051;
-        int checkoutPort = 50052;
+        int inventoryPort = 7001;
+        int checkoutPort = 7003;
 
         InventoryServiceGrpc.InventoryServiceBlockingStub inventoryStub =
                 InventoryServiceGrpc.newBlockingStub(io.grpc.ManagedChannelBuilder
@@ -54,6 +56,16 @@ public class CheckoutServer {
 
         CheckoutServer server = new CheckoutServer(checkoutPort, inventoryStub);
         server.start();
+
+        // 注册服务到Consul
+        ConsulClient consulClient = new ConsulClient("localhost");
+        NewService newService = new NewService();
+        newService.setId("checkout-service");
+        newService.setName("checkout-service");
+        newService.setAddress("localhost");
+        newService.setPort(checkoutPort);
+        consulClient.agentServiceRegister(newService);
+
         server.blockUntilShutdown();
     }
 }
