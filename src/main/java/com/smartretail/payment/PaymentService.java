@@ -12,7 +12,7 @@ public class PaymentService extends PaymentServiceGrpc.PaymentServiceImplBase {
         String expiryDate = request.getExpiryDate();
         String cvv = request.getCvv();
 
-        // 在这里处理支付逻辑,这里只是一个简单的模拟
+        // Process the payment logic here, this is just a simple simulation
         boolean paymentSuccess = processPayment(amount, cardNumber, expiryDate, cvv);
         String transactionId = generateTransactionId();
 
@@ -25,13 +25,47 @@ public class PaymentService extends PaymentServiceGrpc.PaymentServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    @Override
+    public StreamObserver<PaymentProto.PaymentRequest> processPaymentBidirectional(StreamObserver<PaymentProto.PaymentResponse> responseObserver) {
+        return new StreamObserver<PaymentProto.PaymentRequest>() {
+            @Override
+            public void onNext(PaymentProto.PaymentRequest request) {
+                double amount = request.getAmount();
+                String cardNumber = request.getCardNumber();
+                String expiryDate = request.getExpiryDate();
+                String cvv = request.getCvv();
+
+                // Process the payment request
+                boolean paymentSuccess = processPayment(amount, cardNumber, expiryDate, cvv);
+                String transactionId = generateTransactionId();
+
+                // Send the payment response
+                PaymentProto.PaymentResponse response = PaymentProto.PaymentResponse.newBuilder()
+                        .setSuccess(paymentSuccess)
+                        .setTransactionId(transactionId)
+                        .build();
+                responseObserver.onNext(response);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                responseObserver.onError(t);
+            }
+
+            @Override
+            public void onCompleted() {
+                responseObserver.onCompleted();
+            }
+        };
+    }
+
     private boolean processPayment(double amount, String cardNumber, String expiryDate, String cvv) {
-        // 模拟支付处理,假设支付总是成功
+        // Simulate payment processing, assume payment is always successful
         return true;
     }
 
     private String generateTransactionId() {
-        // 生成一个简单的事务ID,实际应用中可能需要更复杂的逻辑
+        // Generate a simple transaction ID, in a real application, more complex logic may be needed
         return "TXN" + System.currentTimeMillis();
     }
 }

@@ -15,6 +15,624 @@ public final class InventoryProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface ProductListRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.smartretail.ProductListRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string productIds = 1;</code>
+     * @return A list containing the productIds.
+     */
+    java.util.List<java.lang.String>
+        getProductIdsList();
+    /**
+     * <code>repeated string productIds = 1;</code>
+     * @return The count of productIds.
+     */
+    int getProductIdsCount();
+    /**
+     * <code>repeated string productIds = 1;</code>
+     * @param index The index of the element to return.
+     * @return The productIds at the given index.
+     */
+    java.lang.String getProductIds(int index);
+    /**
+     * <code>repeated string productIds = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the productIds at the given index.
+     */
+    com.google.protobuf.ByteString
+        getProductIdsBytes(int index);
+  }
+  /**
+   * Protobuf type {@code com.smartretail.ProductListRequest}
+   */
+  public static final class ProductListRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.smartretail.ProductListRequest)
+      ProductListRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ProductListRequest.newBuilder() to construct.
+    private ProductListRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ProductListRequest() {
+      productIds_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProductListRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.smartretail.InventoryProto.internal_static_com_smartretail_ProductListRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.smartretail.InventoryProto.internal_static_com_smartretail_ProductListRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.smartretail.InventoryProto.ProductListRequest.class, com.smartretail.InventoryProto.ProductListRequest.Builder.class);
+    }
+
+    public static final int PRODUCTIDS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList productIds_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string productIds = 1;</code>
+     * @return A list containing the productIds.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getProductIdsList() {
+      return productIds_;
+    }
+    /**
+     * <code>repeated string productIds = 1;</code>
+     * @return The count of productIds.
+     */
+    public int getProductIdsCount() {
+      return productIds_.size();
+    }
+    /**
+     * <code>repeated string productIds = 1;</code>
+     * @param index The index of the element to return.
+     * @return The productIds at the given index.
+     */
+    public java.lang.String getProductIds(int index) {
+      return productIds_.get(index);
+    }
+    /**
+     * <code>repeated string productIds = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the productIds at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getProductIdsBytes(int index) {
+      return productIds_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < productIds_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, productIds_.getRaw(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < productIds_.size(); i++) {
+          dataSize += computeStringSizeNoTag(productIds_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getProductIdsList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.smartretail.InventoryProto.ProductListRequest)) {
+        return super.equals(obj);
+      }
+      com.smartretail.InventoryProto.ProductListRequest other = (com.smartretail.InventoryProto.ProductListRequest) obj;
+
+      if (!getProductIdsList()
+          .equals(other.getProductIdsList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getProductIdsCount() > 0) {
+        hash = (37 * hash) + PRODUCTIDS_FIELD_NUMBER;
+        hash = (53 * hash) + getProductIdsList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.smartretail.InventoryProto.ProductListRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.smartretail.InventoryProto.ProductListRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.smartretail.InventoryProto.ProductListRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.smartretail.InventoryProto.ProductListRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.smartretail.ProductListRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.smartretail.ProductListRequest)
+        com.smartretail.InventoryProto.ProductListRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.smartretail.InventoryProto.internal_static_com_smartretail_ProductListRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.smartretail.InventoryProto.internal_static_com_smartretail_ProductListRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.smartretail.InventoryProto.ProductListRequest.class, com.smartretail.InventoryProto.ProductListRequest.Builder.class);
+      }
+
+      // Construct using com.smartretail.InventoryProto.ProductListRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        productIds_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.smartretail.InventoryProto.internal_static_com_smartretail_ProductListRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.smartretail.InventoryProto.ProductListRequest getDefaultInstanceForType() {
+        return com.smartretail.InventoryProto.ProductListRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.smartretail.InventoryProto.ProductListRequest build() {
+        com.smartretail.InventoryProto.ProductListRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.smartretail.InventoryProto.ProductListRequest buildPartial() {
+        com.smartretail.InventoryProto.ProductListRequest result = new com.smartretail.InventoryProto.ProductListRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.smartretail.InventoryProto.ProductListRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          productIds_.makeImmutable();
+          result.productIds_ = productIds_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.smartretail.InventoryProto.ProductListRequest) {
+          return mergeFrom((com.smartretail.InventoryProto.ProductListRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.smartretail.InventoryProto.ProductListRequest other) {
+        if (other == com.smartretail.InventoryProto.ProductListRequest.getDefaultInstance()) return this;
+        if (!other.productIds_.isEmpty()) {
+          if (productIds_.isEmpty()) {
+            productIds_ = other.productIds_;
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureProductIdsIsMutable();
+            productIds_.addAll(other.productIds_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureProductIdsIsMutable();
+                productIds_.add(s);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringArrayList productIds_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureProductIdsIsMutable() {
+        if (!productIds_.isModifiable()) {
+          productIds_ = new com.google.protobuf.LazyStringArrayList(productIds_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @return A list containing the productIds.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getProductIdsList() {
+        productIds_.makeImmutable();
+        return productIds_;
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @return The count of productIds.
+       */
+      public int getProductIdsCount() {
+        return productIds_.size();
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @param index The index of the element to return.
+       * @return The productIds at the given index.
+       */
+      public java.lang.String getProductIds(int index) {
+        return productIds_.get(index);
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the productIds at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getProductIdsBytes(int index) {
+        return productIds_.getByteString(index);
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The productIds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProductIds(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureProductIdsIsMutable();
+        productIds_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @param value The productIds to add.
+       * @return This builder for chaining.
+       */
+      public Builder addProductIds(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureProductIdsIsMutable();
+        productIds_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @param values The productIds to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllProductIds(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureProductIdsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, productIds_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProductIds() {
+        productIds_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string productIds = 1;</code>
+       * @param value The bytes of the productIds to add.
+       * @return This builder for chaining.
+       */
+      public Builder addProductIdsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureProductIdsIsMutable();
+        productIds_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.smartretail.ProductListRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.smartretail.ProductListRequest)
+    private static final com.smartretail.InventoryProto.ProductListRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.smartretail.InventoryProto.ProductListRequest();
+    }
+
+    public static com.smartretail.InventoryProto.ProductListRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ProductListRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ProductListRequest>() {
+      @java.lang.Override
+      public ProductListRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ProductListRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ProductListRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.smartretail.InventoryProto.ProductListRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ProductRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.smartretail.ProductRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -1414,6 +2032,11 @@ public final class InventoryProto {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_smartretail_ProductListRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_smartretail_ProductListRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_smartretail_ProductRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -1432,27 +2055,36 @@ public final class InventoryProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017inventory.proto\022\017com.smartretail\"#\n\016Pr" +
-      "oductRequest\022\021\n\tproductId\030\001 \001(\t\"Z\n\017Produ" +
-      "ctResponse\022\021\n\tproductId\030\001 \001(\t\022\023\n\013product" +
-      "Name\030\002 \001(\t\022\r\n\005price\030\003 \001(\001\022\020\n\010quantity\030\004 " +
-      "\001(\0052g\n\020InventoryService\022S\n\016getProductInf" +
-      "o\022\037.com.smartretail.ProductRequest\032 .com" +
-      ".smartretail.ProductResponseB\020B\016Inventor" +
-      "yProtob\006proto3"
+      "\n\017inventory.proto\022\017com.smartretail\"(\n\022Pr" +
+      "oductListRequest\022\022\n\nproductIds\030\001 \003(\t\"#\n\016" +
+      "ProductRequest\022\021\n\tproductId\030\001 \001(\t\"Z\n\017Pro" +
+      "ductResponse\022\021\n\tproductId\030\001 \001(\t\022\023\n\013produ" +
+      "ctName\030\002 \001(\t\022\r\n\005price\030\003 \001(\001\022\020\n\010quantity\030" +
+      "\004 \001(\0052\302\001\n\020InventoryService\022S\n\016getProduct" +
+      "Info\022\037.com.smartretail.ProductRequest\032 ." +
+      "com.smartretail.ProductResponse\022Y\n\016getPr" +
+      "oductList\022#.com.smartretail.ProductListR" +
+      "equest\032 .com.smartretail.ProductResponse" +
+      "0\001B\020B\016InventoryProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_com_smartretail_ProductRequest_descriptor =
+    internal_static_com_smartretail_ProductListRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_com_smartretail_ProductListRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_smartretail_ProductListRequest_descriptor,
+        new java.lang.String[] { "ProductIds", });
+    internal_static_com_smartretail_ProductRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_com_smartretail_ProductRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_smartretail_ProductRequest_descriptor,
         new java.lang.String[] { "ProductId", });
     internal_static_com_smartretail_ProductResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_com_smartretail_ProductResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_smartretail_ProductResponse_descriptor,

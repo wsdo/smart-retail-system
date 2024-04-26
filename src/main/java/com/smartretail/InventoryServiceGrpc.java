@@ -46,6 +46,37 @@ public final class InventoryServiceGrpc {
     return getGetProductInfoMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.smartretail.InventoryProto.ProductListRequest,
+      com.smartretail.InventoryProto.ProductResponse> getGetProductListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getProductList",
+      requestType = com.smartretail.InventoryProto.ProductListRequest.class,
+      responseType = com.smartretail.InventoryProto.ProductResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.smartretail.InventoryProto.ProductListRequest,
+      com.smartretail.InventoryProto.ProductResponse> getGetProductListMethod() {
+    io.grpc.MethodDescriptor<com.smartretail.InventoryProto.ProductListRequest, com.smartretail.InventoryProto.ProductResponse> getGetProductListMethod;
+    if ((getGetProductListMethod = InventoryServiceGrpc.getGetProductListMethod) == null) {
+      synchronized (InventoryServiceGrpc.class) {
+        if ((getGetProductListMethod = InventoryServiceGrpc.getGetProductListMethod) == null) {
+          InventoryServiceGrpc.getGetProductListMethod = getGetProductListMethod =
+              io.grpc.MethodDescriptor.<com.smartretail.InventoryProto.ProductListRequest, com.smartretail.InventoryProto.ProductResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getProductList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.smartretail.InventoryProto.ProductListRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.smartretail.InventoryProto.ProductResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new InventoryServiceMethodDescriptorSupplier("getProductList"))
+              .build();
+        }
+      }
+    }
+    return getGetProductListMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,13 @@ public final class InventoryServiceGrpc {
         io.grpc.stub.StreamObserver<com.smartretail.InventoryProto.ProductResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetProductInfoMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getProductList(com.smartretail.InventoryProto.ProductListRequest request,
+        io.grpc.stub.StreamObserver<com.smartretail.InventoryProto.ProductResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetProductListMethod(), responseObserver);
+    }
   }
 
   /**
@@ -136,6 +174,14 @@ public final class InventoryServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetProductInfoMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getProductList(com.smartretail.InventoryProto.ProductListRequest request,
+        io.grpc.stub.StreamObserver<com.smartretail.InventoryProto.ProductResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getGetProductListMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -159,6 +205,14 @@ public final class InventoryServiceGrpc {
     public com.smartretail.InventoryProto.ProductResponse getProductInfo(com.smartretail.InventoryProto.ProductRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetProductInfoMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.smartretail.InventoryProto.ProductResponse> getProductList(
+        com.smartretail.InventoryProto.ProductListRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getGetProductListMethod(), getCallOptions(), request);
     }
   }
 
@@ -188,6 +242,7 @@ public final class InventoryServiceGrpc {
   }
 
   private static final int METHODID_GET_PRODUCT_INFO = 0;
+  private static final int METHODID_GET_PRODUCT_LIST = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -208,6 +263,10 @@ public final class InventoryServiceGrpc {
       switch (methodId) {
         case METHODID_GET_PRODUCT_INFO:
           serviceImpl.getProductInfo((com.smartretail.InventoryProto.ProductRequest) request,
+              (io.grpc.stub.StreamObserver<com.smartretail.InventoryProto.ProductResponse>) responseObserver);
+          break;
+        case METHODID_GET_PRODUCT_LIST:
+          serviceImpl.getProductList((com.smartretail.InventoryProto.ProductListRequest) request,
               (io.grpc.stub.StreamObserver<com.smartretail.InventoryProto.ProductResponse>) responseObserver);
           break;
         default:
@@ -235,6 +294,13 @@ public final class InventoryServiceGrpc {
               com.smartretail.InventoryProto.ProductRequest,
               com.smartretail.InventoryProto.ProductResponse>(
                 service, METHODID_GET_PRODUCT_INFO)))
+        .addMethod(
+          getGetProductListMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              com.smartretail.InventoryProto.ProductListRequest,
+              com.smartretail.InventoryProto.ProductResponse>(
+                service, METHODID_GET_PRODUCT_LIST)))
         .build();
   }
 
@@ -284,6 +350,7 @@ public final class InventoryServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new InventoryServiceFileDescriptorSupplier())
               .addMethod(getGetProductInfoMethod())
+              .addMethod(getGetProductListMethod())
               .build();
         }
       }

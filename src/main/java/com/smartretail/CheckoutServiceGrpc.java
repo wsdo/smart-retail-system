@@ -46,6 +46,37 @@ public final class CheckoutServiceGrpc {
     return getCheckoutMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.smartretail.CheckoutProto.CheckoutRequest,
+      com.smartretail.CheckoutProto.CheckoutResponse> getCheckoutStreamMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "checkoutStream",
+      requestType = com.smartretail.CheckoutProto.CheckoutRequest.class,
+      responseType = com.smartretail.CheckoutProto.CheckoutResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+  public static io.grpc.MethodDescriptor<com.smartretail.CheckoutProto.CheckoutRequest,
+      com.smartretail.CheckoutProto.CheckoutResponse> getCheckoutStreamMethod() {
+    io.grpc.MethodDescriptor<com.smartretail.CheckoutProto.CheckoutRequest, com.smartretail.CheckoutProto.CheckoutResponse> getCheckoutStreamMethod;
+    if ((getCheckoutStreamMethod = CheckoutServiceGrpc.getCheckoutStreamMethod) == null) {
+      synchronized (CheckoutServiceGrpc.class) {
+        if ((getCheckoutStreamMethod = CheckoutServiceGrpc.getCheckoutStreamMethod) == null) {
+          CheckoutServiceGrpc.getCheckoutStreamMethod = getCheckoutStreamMethod =
+              io.grpc.MethodDescriptor.<com.smartretail.CheckoutProto.CheckoutRequest, com.smartretail.CheckoutProto.CheckoutResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "checkoutStream"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.smartretail.CheckoutProto.CheckoutRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.smartretail.CheckoutProto.CheckoutResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CheckoutServiceMethodDescriptorSupplier("checkoutStream"))
+              .build();
+        }
+      }
+    }
+    return getCheckoutStreamMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,13 @@ public final class CheckoutServiceGrpc {
         io.grpc.stub.StreamObserver<com.smartretail.CheckoutProto.CheckoutResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckoutMethod(), responseObserver);
     }
+
+    /**
+     */
+    default io.grpc.stub.StreamObserver<com.smartretail.CheckoutProto.CheckoutRequest> checkoutStream(
+        io.grpc.stub.StreamObserver<com.smartretail.CheckoutProto.CheckoutResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getCheckoutStreamMethod(), responseObserver);
+    }
   }
 
   /**
@@ -135,6 +173,14 @@ public final class CheckoutServiceGrpc {
         io.grpc.stub.StreamObserver<com.smartretail.CheckoutProto.CheckoutResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCheckoutMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.smartretail.CheckoutProto.CheckoutRequest> checkoutStream(
+        io.grpc.stub.StreamObserver<com.smartretail.CheckoutProto.CheckoutResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
+          getChannel().newCall(getCheckoutStreamMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -188,6 +234,7 @@ public final class CheckoutServiceGrpc {
   }
 
   private static final int METHODID_CHECKOUT = 0;
+  private static final int METHODID_CHECKOUT_STREAM = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -220,6 +267,9 @@ public final class CheckoutServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_CHECKOUT_STREAM:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.checkoutStream(
+              (io.grpc.stub.StreamObserver<com.smartretail.CheckoutProto.CheckoutResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -235,6 +285,13 @@ public final class CheckoutServiceGrpc {
               com.smartretail.CheckoutProto.CheckoutRequest,
               com.smartretail.CheckoutProto.CheckoutResponse>(
                 service, METHODID_CHECKOUT)))
+        .addMethod(
+          getCheckoutStreamMethod(),
+          io.grpc.stub.ServerCalls.asyncClientStreamingCall(
+            new MethodHandlers<
+              com.smartretail.CheckoutProto.CheckoutRequest,
+              com.smartretail.CheckoutProto.CheckoutResponse>(
+                service, METHODID_CHECKOUT_STREAM)))
         .build();
   }
 
@@ -284,6 +341,7 @@ public final class CheckoutServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new CheckoutServiceFileDescriptorSupplier())
               .addMethod(getCheckoutMethod())
+              .addMethod(getCheckoutStreamMethod())
               .build();
         }
       }

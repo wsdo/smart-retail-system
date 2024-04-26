@@ -1585,10 +1585,13 @@ public final class PaymentProto {
       "entRequest\022\016\n\006amount\030\001 \001(\001\022\022\n\ncardNumber" +
       "\030\002 \001(\t\022\022\n\nexpiryDate\030\003 \001(\t\022\013\n\003cvv\030\004 \001(\t\"" +
       "9\n\017PaymentResponse\022\017\n\007success\030\001 \001(\010\022\025\n\rt" +
-      "ransactionId\030\002 \001(\t2e\n\016PaymentService\022S\n\016" +
-      "processPayment\022\037.com.smartretail.Payment" +
-      "Request\032 .com.smartretail.PaymentRespons" +
-      "eB\016B\014PaymentProtob\006proto3"
+      "ransactionId\030\002 \001(\t2\313\001\n\016PaymentService\022S\n" +
+      "\016processPayment\022\037.com.smartretail.Paymen" +
+      "tRequest\032 .com.smartretail.PaymentRespon" +
+      "se\022d\n\033processPaymentBidirectional\022\037.com." +
+      "smartretail.PaymentRequest\032 .com.smartre" +
+      "tail.PaymentResponse(\0010\001B\016B\014PaymentProto" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

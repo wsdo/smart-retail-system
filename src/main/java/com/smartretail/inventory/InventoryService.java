@@ -11,7 +11,6 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
 
     public InventoryService() {
         inventory = new HashMap<>();
-        // 添加一些示例商品信息
         inventory.put("1", ProductInfo.newBuilder().setProductId("1").setProductName("商品1").setPrice(10.0).setQuantity(100).build());
         inventory.put("2", ProductInfo.newBuilder().setProductId("2").setProductName("商品2").setPrice(20.0).setQuantity(50).build());
         inventory.put("3", ProductInfo.newBuilder().setProductId("3").setProductName("商品3").setPrice(30.0).setQuantity(30).build());
@@ -34,6 +33,23 @@ public class InventoryService extends InventoryServiceGrpc.InventoryServiceImplB
         } else {
             responseObserver.onError(new RuntimeException("Product not found: " + productId));
         }
+    }
+
+    @Override
+    public void getProductList(InventoryProto.ProductListRequest request, StreamObserver<InventoryProto.ProductResponse> responseObserver) {
+        for (String productId : request.getProductIdsList()) {
+            ProductInfo productInfo = inventory.get(productId);
+            if (productInfo != null) {
+                InventoryProto.ProductResponse response = InventoryProto.ProductResponse.newBuilder()
+                        .setProductId(productInfo.getProductId())
+                        .setProductName(productInfo.getProductName())
+                        .setPrice(productInfo.getPrice())
+                        .setQuantity(productInfo.getQuantity())
+                        .build();
+                responseObserver.onNext(response);
+            }
+        }
+        responseObserver.onCompleted();
     }
 
     // 内部类,表示商品信息

@@ -48,4 +48,50 @@ public class CheckoutService extends CheckoutServiceGrpc.CheckoutServiceImplBase
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
+
+    @Override
+    public StreamObserver<CheckoutProto.CheckoutRequest> checkoutStream(StreamObserver<CheckoutProto.CheckoutResponse> responseObserver) {
+        return new StreamObserver<CheckoutProto.CheckoutRequest>() {
+            double totalPrice = 0;
+            List<String> productIds = new ArrayList<>();
+            List<Integer> quantities = new ArrayList<>();
+
+            @Override
+            public void onNext(CheckoutProto.CheckoutRequest request) {
+                List<String> requestProductIds = request.getProductIdsList();
+                List<Integer> requestQuantities = request.getQuantitiesList();
+
+                for (int i = 0; i < requestProductIds.size(); i++) {
+                    String productId = requestProductIds.get(i);
+                    int quantity = requestQuantities.get(i);
+
+                    InventoryProto.ProductRequest productRequest = InventoryProto.ProductRequest.newBuilder().setProductId(productId).build();
+                    InventoryProto.ProductResponse productResponse = inventoryStub.getProductInfo(productRequest);
+
+                    if (productResponse.getQuantity() >= quantity) {
+                        double price = productResponse.getPrice();
+                        totalPrice += price * quantity;
+                        productIds.add(productId);
+                        quantities.add(quantity);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                responseObserver.onError(t);
+            }
+
+            @Override
+            public void onCompleted() {
+                CheckoutProto.CheckoutResponse response = CheckoutProto.CheckoutResponse.newBuilder()
+                        .setTotalPrice(totalPrice)
+                        .addAllProductIds(productIds)
+                        .addAllQuantities(quantities)
+                        .build();
+                responseObserver.onNext(response);
+                responseObserver.onCompleted();
+            }
+        };
+    }
 }

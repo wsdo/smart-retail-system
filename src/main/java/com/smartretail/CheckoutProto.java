@@ -1732,10 +1732,12 @@ public final class CheckoutProto {
       "ckoutRequest\022\022\n\nproductIds\030\001 \003(\t\022\022\n\nquan" +
       "tities\030\002 \003(\005\"N\n\020CheckoutResponse\022\022\n\ntota" +
       "lPrice\030\001 \001(\001\022\022\n\nproductIds\030\002 \003(\t\022\022\n\nquan" +
-      "tities\030\003 \003(\0052b\n\017CheckoutService\022O\n\010check" +
-      "out\022 .com.smartretail.CheckoutRequest\032!." +
-      "com.smartretail.CheckoutResponseB\017B\rChec" +
-      "koutProtob\006proto3"
+      "tities\030\003 \003(\0052\273\001\n\017CheckoutService\022O\n\010chec" +
+      "kout\022 .com.smartretail.CheckoutRequest\032!" +
+      ".com.smartretail.CheckoutResponse\022W\n\016che" +
+      "ckoutStream\022 .com.smartretail.CheckoutRe" +
+      "quest\032!.com.smartretail.CheckoutResponse" +
+      "(\001B\017B\rCheckoutProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

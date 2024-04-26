@@ -46,6 +46,37 @@ public final class PaymentServiceGrpc {
     return getProcessPaymentMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.smartretail.PaymentProto.PaymentRequest,
+      com.smartretail.PaymentProto.PaymentResponse> getProcessPaymentBidirectionalMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "processPaymentBidirectional",
+      requestType = com.smartretail.PaymentProto.PaymentRequest.class,
+      responseType = com.smartretail.PaymentProto.PaymentResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.smartretail.PaymentProto.PaymentRequest,
+      com.smartretail.PaymentProto.PaymentResponse> getProcessPaymentBidirectionalMethod() {
+    io.grpc.MethodDescriptor<com.smartretail.PaymentProto.PaymentRequest, com.smartretail.PaymentProto.PaymentResponse> getProcessPaymentBidirectionalMethod;
+    if ((getProcessPaymentBidirectionalMethod = PaymentServiceGrpc.getProcessPaymentBidirectionalMethod) == null) {
+      synchronized (PaymentServiceGrpc.class) {
+        if ((getProcessPaymentBidirectionalMethod = PaymentServiceGrpc.getProcessPaymentBidirectionalMethod) == null) {
+          PaymentServiceGrpc.getProcessPaymentBidirectionalMethod = getProcessPaymentBidirectionalMethod =
+              io.grpc.MethodDescriptor.<com.smartretail.PaymentProto.PaymentRequest, com.smartretail.PaymentProto.PaymentResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "processPaymentBidirectional"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.smartretail.PaymentProto.PaymentRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.smartretail.PaymentProto.PaymentResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PaymentServiceMethodDescriptorSupplier("processPaymentBidirectional"))
+              .build();
+        }
+      }
+    }
+    return getProcessPaymentBidirectionalMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,13 @@ public final class PaymentServiceGrpc {
         io.grpc.stub.StreamObserver<com.smartretail.PaymentProto.PaymentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getProcessPaymentMethod(), responseObserver);
     }
+
+    /**
+     */
+    default io.grpc.stub.StreamObserver<com.smartretail.PaymentProto.PaymentRequest> processPaymentBidirectional(
+        io.grpc.stub.StreamObserver<com.smartretail.PaymentProto.PaymentResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getProcessPaymentBidirectionalMethod(), responseObserver);
+    }
   }
 
   /**
@@ -135,6 +173,14 @@ public final class PaymentServiceGrpc {
         io.grpc.stub.StreamObserver<com.smartretail.PaymentProto.PaymentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getProcessPaymentMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.smartretail.PaymentProto.PaymentRequest> processPaymentBidirectional(
+        io.grpc.stub.StreamObserver<com.smartretail.PaymentProto.PaymentResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getProcessPaymentBidirectionalMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -188,6 +234,7 @@ public final class PaymentServiceGrpc {
   }
 
   private static final int METHODID_PROCESS_PAYMENT = 0;
+  private static final int METHODID_PROCESS_PAYMENT_BIDIRECTIONAL = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -220,6 +267,9 @@ public final class PaymentServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_PROCESS_PAYMENT_BIDIRECTIONAL:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.processPaymentBidirectional(
+              (io.grpc.stub.StreamObserver<com.smartretail.PaymentProto.PaymentResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -235,6 +285,13 @@ public final class PaymentServiceGrpc {
               com.smartretail.PaymentProto.PaymentRequest,
               com.smartretail.PaymentProto.PaymentResponse>(
                 service, METHODID_PROCESS_PAYMENT)))
+        .addMethod(
+          getProcessPaymentBidirectionalMethod(),
+          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+            new MethodHandlers<
+              com.smartretail.PaymentProto.PaymentRequest,
+              com.smartretail.PaymentProto.PaymentResponse>(
+                service, METHODID_PROCESS_PAYMENT_BIDIRECTIONAL)))
         .build();
   }
 
@@ -284,6 +341,7 @@ public final class PaymentServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new PaymentServiceFileDescriptorSupplier())
               .addMethod(getProcessPaymentMethod())
+              .addMethod(getProcessPaymentBidirectionalMethod())
               .build();
         }
       }

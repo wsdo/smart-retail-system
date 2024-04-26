@@ -5,6 +5,7 @@ com/smartretail/CheckoutProto$CheckoutRequest$Builder.class
 com/smartretail/CheckoutServiceGrpc$CheckoutServiceFileDescriptorSupplier.class
 com/smartretail/CheckoutProto$CheckoutRequest$1.class
 com/smartretail/PaymentServiceGrpc$AsyncService.class
+com/smartretail/InventoryProto$ProductListRequest.class
 com/smartretail/PaymentProto$PaymentRequest$1.class
 com/smartretail/InventoryServiceGrpc$InventoryServiceFileDescriptorSupplier.class
 com/smartretail/InventoryServiceGrpc$InventoryServiceFutureStub.class
@@ -42,6 +43,7 @@ com/smartretail/InventoryServiceGrpc$2.class
 com/smartretail/CheckoutProto.class
 com/smartretail/CheckoutProto$CheckoutResponseOrBuilder.class
 com/smartretail/PaymentServiceGrpc$1.class
+com/smartretail/InventoryProto$ProductListRequest$1.class
 com/smartretail/InventoryProto$ProductResponseOrBuilder.class
 com/smartretail/InventoryServiceGrpc$InventoryServiceMethodDescriptorSupplier.class
 com/smartretail/PaymentServiceGrpc$PaymentServiceFutureStub.class
@@ -52,6 +54,7 @@ com/smartretail/InventoryServiceGrpc$InventoryServiceBaseDescriptorSupplier.clas
 com/smartretail/CheckoutServiceGrpc$2.class
 com/smartretail/CheckoutServiceGrpc$CheckoutServiceImplBase.class
 com/smartretail/InventoryProto$ProductResponse$Builder.class
+com/smartretail/InventoryProto$ProductListRequest$Builder.class
 com/smartretail/PaymentServiceGrpc$PaymentServiceStub.class
 com/smartretail/InventoryProto$ProductRequest$Builder.class
 com/smartretail/PaymentProto$PaymentRequest$Builder.class
@@ -60,6 +63,7 @@ com/smartretail/CheckoutServiceGrpc$1.class
 com/smartretail/CheckoutProto$CheckoutResponse.class
 com/smartretail/CheckoutServiceGrpc$CheckoutServiceMethodDescriptorSupplier.class
 com/smartretail/CheckoutServiceGrpc$CheckoutServiceBaseDescriptorSupplier.class
+com/smartretail/InventoryProto$ProductListRequestOrBuilder.class
 com/smartretail/PaymentProto$PaymentResponse$Builder.class
 com/smartretail/CheckoutServiceGrpc$CheckoutServiceStub.class
 com/smartretail/InventoryProto$ProductResponse$1.class

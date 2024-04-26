@@ -6,6 +6,11 @@ package com.smartretail;
 
 service InventoryService {
   rpc getProductInfo (ProductRequest) returns (ProductResponse);
+  rpc getProductList (ProductListRequest) returns (stream ProductResponse);
+}
+
+message ProductListRequest {
+  repeated string productIds = 1;
 }
 
 message ProductRequest {

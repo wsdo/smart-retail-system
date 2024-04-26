@@ -6,6 +6,7 @@ package com.smartretail;
 
 service PaymentService {
   rpc processPayment (PaymentRequest) returns (PaymentResponse);
+  rpc processPaymentBidirectional (stream PaymentRequest) returns (stream PaymentResponse);
 }
 
 message PaymentRequest {
