@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_outer_classname = "PaymentProto";
+
+package com.smartretail;
+
+service PaymentService {
+  rpc processPayment (PaymentRequest) returns (PaymentResponse);
+  rpc processPaymentBidirectional (stream PaymentRequest) returns (stream PaymentResponse);
+}
+
+message PaymentRequest {
+  double amount = 1;
+  string cardNumber = 2;
+  string expiryDate = 3;
+  string cvv = 4;
+}
+
+message PaymentResponse {
+  bool success = 1;
+  string transactionId = 2;
+}

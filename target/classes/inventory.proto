@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_outer_classname = "InventoryProto";
+
+package com.smartretail;
+
+service InventoryService {
+  rpc getProductInfo (ProductRequest) returns (ProductResponse);
+  rpc getProductList (ProductListRequest) returns (stream ProductResponse);
+}
+
+message ProductListRequest {
+  repeated string productIds = 1;
+}
+
+message ProductRequest {
+  string productId = 1;
+}
+
+message ProductResponse {
+  string productId = 1;
+  string productName = 2;
+  double price = 3;
+  int32 quantity = 4;
+}
