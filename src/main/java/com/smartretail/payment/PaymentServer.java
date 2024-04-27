@@ -46,7 +46,7 @@ public class PaymentServer {
         PaymentServer server = new PaymentServer(port);
         server.start();
 
-        // 注册服务到Consul
+        // Register the service with Consul
         ConsulClient consulClient = new ConsulClient("localhost");
         NewService newService = new NewService();
         newService.setId("payment-service");

@@ -17,12 +17,14 @@ public class InventoryServer {
     }
 
     public void start() throws IOException {
+        // Build and start the server, adding the InventoryService
         server = ServerBuilder.forPort(port)
                 .addService(new InventoryService())
                 .build()
                 .start();
         System.out.println("InventoryServer started, listening on " + port);
 
+        // Add a shutdown hook to gracefully shut down the server
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             System.out.println("Shutting down InventoryServer...");
             InventoryServer.this.stop();
@@ -32,12 +34,14 @@ public class InventoryServer {
 
     public void stop() {
         if (server != null) {
+            // Shut down the server if it is not null
             server.shutdown();
         }
     }
 
     public void blockUntilShutdown() throws InterruptedException {
         if (server != null) {
+            // Wait for the server to terminate
             server.awaitTermination();
         }
     }
@@ -46,7 +50,7 @@ public class InventoryServer {
         int port = 7001;
         InventoryServer server = new InventoryServer(port);
         server.start();
-        // 注册服务到Consul
+        // Register the service with Consul
         ConsulClient consulClient = new ConsulClient("localhost");
         NewService newService = new NewService();
         newService.setName("inventory-service");
